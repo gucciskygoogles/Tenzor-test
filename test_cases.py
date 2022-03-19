@@ -6,13 +6,14 @@ import pytest
 from pages.yandex_main import YandexMainPage
 
 
+@allure.feature()
 class TestScenario:
 
     """
     Первый тест помечен как ожидаемый к падению, т.к. вероятность наличия ссылок на tenzor.ru
     во всех пяти результатах мала
     """
-
+    @allure.description('Тест проверки результатов поиска')
     @allure.story()
     @pytest.mark.xfail()
     def test_case_one(self, browser, url):
@@ -22,6 +23,7 @@ class TestScenario:
         search_results = page.search_in_input_field()
         search_results.count_of_results()
 
+    @allure.description('Тест проверки изображений')
     @allure.story()
     def test_case_two(self, browser, url):
         page = YandexMainPage(browser, url)
