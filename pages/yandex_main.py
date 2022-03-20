@@ -8,14 +8,14 @@ from pages.yandex_images_page import YandexImagesPage
 
 class YandexMainPage(BasePage):
 
-    @allure.step
+    @allure.step('Проверка октрытия страницы Яндекс')
     def should_be_yandex_main_page(self):
         self.should_be_yandex_url()
 
     def should_be_yandex_url(self):
         assert self.browser.current_url == "https://yandex.ru/"
 
-    @allure.step
+    @allure.step('Поискаовая строка и слово тензор')
     def search_in_input_field(self):
         input_field = self.browser.find_element(*YandexMainPagesLocators.INPUT_FIELD)
         input_field.click()
@@ -24,15 +24,15 @@ class YandexMainPage(BasePage):
         input_field.send_keys(Keys.RETURN)
         return YandexSearchResultsPage(browser=self.browser, url=self.browser.current_url)
 
-    @allure.step
+    @allure.step('Проверка suggest')
     def should_be_pop_up(self):
         assert self.is_element_present(*YandexMainPagesLocators.POPUP), "Suggest отсутствует"
 
-    @allure.step
+    @allure.step('Проверка url страницы с категориями')
     def should_be_images_link(self):
         assert self.is_element_present(*YandexMainPagesLocators.IMAGES_LINK)
 
-    @allure.step
+    @allure.step('Переход на страницу категорий')
     def going_to_images_page(self):
         images_link = self.browser.find_element(*YandexMainPagesLocators.IMAGES_LINK)
         images_link.click()

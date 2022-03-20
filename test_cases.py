@@ -43,4 +43,5 @@ class TestScenario:
         image_page.prev_image_btn_click()
         time.sleep(2)
         source_after_click = image_page.get_image_source()
-        assert source_after_click == source_before_click
+        with allure.step('Проверка того, что картинка та же'):
+            assert source_after_click == source_before_click

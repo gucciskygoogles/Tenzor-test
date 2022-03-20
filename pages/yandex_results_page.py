@@ -1,9 +1,12 @@
+import allure
+
 from pages.basepage import BasePage
 from pages.locators import YandexResultsPageLocators
 
 
 class YandexSearchResultsPage(BasePage):
 
+    @allure.step('Провекра количества результатов поиска')
     def count_of_results(self):
         list_links = []
         counter = 0
